@@ -1,0 +1,11 @@
+.navIcons {
+  gap: 2rem;
+  margin-left: 2rem;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+  color: #25c4f9;
+  background: transparent;
+  border: 2px solid #25c4f9;
+}
