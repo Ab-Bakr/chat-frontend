@@ -17,7 +17,7 @@ const Chat = () => {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io("http://localhost:8800");
+    socket.current = io("https://socket-server-g41b.onrender.com");
     socket.current.emit("new-user-add", user._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
@@ -34,7 +34,7 @@ const Chat = () => {
       }
     };
     getChats();
-  }, [user]);
+  }, [user._id]);
 
   // sending message to socket server
   useEffect(() => {
@@ -81,7 +81,7 @@ const Chat = () => {
 
       <div className="Right-side-chat">
         <div style={{ width: "20rem", alignSelf: "flex-end" }}>
-          <NavIcons />
+          <NavIcons currentUserId={user._id} />
         </div>
         <ChatBox
           chat={currentChat}

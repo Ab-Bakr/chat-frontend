@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "https://chat-server-jin3.onrender.com" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -17,3 +17,4 @@ export const updateUser = (id, formData) => API.put(`/user/${id}`, formData);
 export const getAllUser = () => API.get("/user");
 export const followUser = (id, data) => API.put(`/user/${id}/follow`, data);
 export const unfollowUser = (id, data) => API.put(`/user/${id}/unfollow`, data);
+export const deleteUser = (id, data) => API.delete(`user/${id}`);

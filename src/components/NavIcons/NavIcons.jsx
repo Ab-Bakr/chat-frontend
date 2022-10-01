@@ -1,22 +1,30 @@
 import React from "react";
 
-import Noti from "../../img/noti.png";
-import Comment from "../../img/comment.png";
-import { UilSetting } from "@iconscout/react-unicons";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actions/AuthAction";
+import { deleteUser } from "../../api/UserRequest";
 
 import "./NavIcons.css";
 
-const NavIcons = () => {
+const NavIcons = ({ currentUserId }) => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
     dispatch(logout());
   };
 
-  const handledelete = () => {};
+  const handledelete = async (id) => {
+    try {
+      const bodyData = {
+        currentUserId: currentUserId,
+        currentUserAdminStatus: false,
+      };
+      const { data } = await deleteUser(id, bodyData);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="navIcons">
       <button
