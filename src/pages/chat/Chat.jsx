@@ -34,7 +34,7 @@ const Chat = () => {
       }
     };
     getChats();
-  }, [user._id]);
+  }, [user]);
 
   // sending message to socket server
   useEffect(() => {
